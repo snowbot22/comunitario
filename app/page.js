@@ -1,95 +1,48 @@
-import Image from "next/image";
+import { Wrapp } from "@/components/Wrapp";
+import { getEmprendsInfo } from "@/libs/get-emprends";
 import styles from "./page.module.css";
+import Link from "next/link";
+import { getInicioInfo } from "@/libs/get-inicio";
+import Slider from "@/components/Slider";
 
-export default function Home() {
+export default async function Home() {
+  const {
+    heroTitle,
+    heroLink,
+    heroImage,
+    historiaTitle,
+    historiaParrafo,
+    historiaImages,
+    historiaAlt,
+  } = await getInicioInfo();
+  console.log(historiaImages);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      <article className={styles.hero}>
+        <img src={heroImage} alt="imagen" className={styles.hero__img} />
+        <section className={`${styles.hero__text} flex--center`}>
+          <h1 className={styles.hero__title}>{heroTitle}</h1>
+          <Link href={`/${heroLink}`} className="button--sky">
+            Descubre más
+          </Link>
+        </section>
+      </article>
+      <article className={`${styles.historia} flex--center`}>
+        <section className={`${styles.historia__text}`}>
+          <h2 className="titles--2">{historiaTitle}</h2>
+          <p>{historiaParrafo}</p>
+          <Link
+            href="https://www.facebook.com/comunidadlatoglla"
+            className="button--sky"
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            Conoce más
+          </Link>
+        </section>
+        <section className={styles.historia__container}>
+          <Slider images={historiaImages} alts={historiaAlt} />
+        </section>
+      </article>
+    </>
   );
 }

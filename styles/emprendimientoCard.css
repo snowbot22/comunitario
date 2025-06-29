@@ -1,0 +1,44 @@
+.emprendimientoCard{
+    display: flex;
+    flex-flow: row wrap;
+    height: 300px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.emprendimientoCard__image{
+    height: 300px;
+    width: 45%;
+    max-width: 400px;
+    object-fit:cover;
+}
+
+.emprendimientoCard__text{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    width: 55%;
+    padding: 0 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .emprendimientoCard{
+    flex-flow: column nowrap;
+    height: max-content;
+    gap: 8px;
+}
+.emprendimientoCard__image{
+    height: 200px;
+    width: 100%;
+    max-width: none;
+    object-fit:contain;
+}
+.emprendimientoCard__text{
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+}

@@ -1,0 +1,54 @@
+.ventaCard{
+    background-color: var(--blue);
+    border-radius: 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    max-width: 1000px;
+    width: 100%;
+    padding: 30px;
+}
+
+.ventaCard__text{
+    gap: 10px;
+    width: 55%;
+    justify-content: center;
+    padding: 30px;
+}
+
+.ventaCard__container{
+    width: 45%;
+}
+
+.ventaCard__title{
+    font-size: 32px;
+    padding: 0 10px 0px 0;
+    border-bottom: 2.5px solid var(--cyan);
+    width: fit-content;
+}
+
+.ventaCard__precio{
+    color: var(--yellow);
+    font-weight: bold;
+    font-size: 22px;
+}
+
+@media screen and (max-width: 750px) {
+    .ventaCard{
+        flex-flow: column nowrap;
+        padding: 0 0px 15px;
+    }
+    .ventaCard__text{
+        width: 100%;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 30px 20px 20px;
+    }
+    .ventaCard__container{
+        width: 100%;
+        max-width: 550px;
+        padding: 0 10px;
+    }
+}

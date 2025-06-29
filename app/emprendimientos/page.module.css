@@ -1,0 +1,25 @@
+.filter{
+    background-color: var(--blue);
+    height: 75px;
+    width: 100%;
+}
+
+.emps{
+    width: 100%;
+    height: max-content;
+    margin: 0 auto;
+    padding: 40px 30px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 40px;
+    column-gap: 30px;
+    margin-bottom: 100px
+}
+
+@media screen and (max-width: 1000px){
+    .emps{
+        display: flex;
+        flex-flow: column nowrap;
+
+    }
+}
