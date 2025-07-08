@@ -10,6 +10,7 @@
     width: 45%;
     max-width: 400px;
     object-fit:cover;
+    background-color: var(--white);
 }
 
 .emprendimientoCard__text{

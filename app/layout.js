@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import { Fira_Code, Work_Sans } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const geistSans = Fira_Code({
   variable: "--font-fira-code",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

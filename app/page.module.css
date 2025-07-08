@@ -46,6 +46,32 @@
   padding: 30px;
 }
 
+
+.ventas{
+  background-color: var(--blue);
+  height: max-content;
+  padding: 30px;
+  margin-top: 20px;
+  color: var(--white);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.ventas__container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.ventas__title{
+  font-size: 32px;
+}
+
 @media screen and (max-width: 600px) and (min-width: 400px) {
   .hero {
     height: 400px;

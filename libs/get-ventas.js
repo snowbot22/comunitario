@@ -1,11 +1,25 @@
 import { query } from "./strapi";
 const { HOST } = process.env;
 
-export async function getVentasInfo() {
-  return query(
-    "ventas?fields[0]=titulo&fields[1]=descripcion&fields[2]=precio&fields[3]=telefono&fields[4]=direccion&fields[5]=whatsapp&populate[fotos][fields][0]=url&populate[fotos][fields][1]=alternativeText"
-  ).then((res) => {
-    return res.data.map((venta) => {
+export async function getVentasInfo({ pageSize, page }) {
+  let urlQuery =
+    `ventas?` +
+    `fields[0]=titulo&` +
+    `fields[1]=descripcion&` +
+    `fields[2]=precio&` +
+    `fields[3]=telefono&` +
+    `fields[4]=direccion&` +
+    `fields[5]=whatsapp&` +
+    `populate[fotos][fields][0]=url&` +
+    `populate[fotos][fields][1]=alternativeText`;
+
+  if (page) urlQuery += `&pagination[page]=${page}`;
+  if (pageSize) urlQuery += `&pagination[pageSize]=${pageSize}`;
+
+  return query(urlQuery).then((res) => {
+    const paginacion = res.meta.pagination;
+
+    const ventas = res.data.map((venta) => {
       const {
         titulo,
         descripcion,
@@ -41,5 +55,10 @@ export async function getVentasInfo() {
         ventaAlt,
       };
     });
+
+    return {
+      ventas: ventas,
+      paginacion: paginacion,
+    };
   });
 }
